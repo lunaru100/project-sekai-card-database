@@ -1,0 +1,38 @@
+#menuContainer {
+  background-color: #0d2133;
+  color: white;
+  width: 94vw;
+  padding: 0 3vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+#mainMenu {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  width: 40vw;
+  height: 10vh;
+  gap: 5vw;
+}
+
+#logo {
+  height: 6vh;
+}
+
+#loginMenu {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  width: 20vw;
+  height: 10vh;
+  gap: 5vw;
+}
+
+#outlet {
+  margin-top: 10vh;
+}

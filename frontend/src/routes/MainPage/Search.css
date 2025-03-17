@@ -1,0 +1,28 @@
+#search {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#searchForm{
+    position: relative;
+}
+
+#searchBar {
+  width: 30vw;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  padding: 2vh 7.5vh;
+  height: 2vh;
+  font-size: 2.5vh;
+}
+
+#searchBarIcon {
+  position: absolute;
+  height: 4vh;
+  top: 20%;
+  left: 2%;
+  pointer-events: none;
+}
