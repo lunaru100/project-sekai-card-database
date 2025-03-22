@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Menu from "./routes/Menu";
 import MainPage from "./routes/MainPage";
+import Login from "./routes/Login";
 import "./index.css";
 
 const AppContainer: React.FC = () => {
@@ -17,7 +18,7 @@ const AppContainer: React.FC = () => {
         },
         {
           path: "/login",
-          element: <div>Login</div>,
+          element: <Login />,
         },
       ],
     },

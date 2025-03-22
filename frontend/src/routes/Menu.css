@@ -36,3 +36,13 @@
 #outlet {
   margin-top: 10vh;
 }
+
+.links{
+  color: white;
+  text-decoration: none;
+}
+
+.links:visited{
+  color: white;
+  text-decoration: none;
+}
