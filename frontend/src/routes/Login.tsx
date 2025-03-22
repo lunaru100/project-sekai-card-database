@@ -1,4 +1,5 @@
 import "./Login.css";
+import "./Classes.css";
 import bg from "./../assets/rui_login_bg.jpg";
 
 function Login() {
@@ -11,22 +12,15 @@ function Login() {
           <br />
           Please log into your account
         </span>
-        <form id="loginForm">
-          <label form="login" className="labels">
-            Login
-          </label>
-          <input type="text" id="loginInput" name="login" className="inputs" />
-          <label form="password" className="labels" style={{marginTop: "1.5vh"}}>
+        <form id="loginForm" className="form">
+          <label className="labels">Login</label>
+          <input type="text" name="login" className="inputs" />
+          <label className="labels" style={{ marginTop: "1.5vh" }}>
             Password
           </label>
-          <input
-            type="password"
-            id="passwordInput"
-            name="password"
-            className="inputs"
-          />
-          <div id="loginBtnContainer">
-            <button type="submit" id="loginBtn">
+          <input type="password" name="password" className="inputs" />
+          <div id="loginBtnContainer" className="btnContainer">
+            <button type="submit" id="loginBtn" className="formBtn">
               LOG IN
             </button>
           </div>

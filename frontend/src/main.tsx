@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Menu from "./routes/Menu";
 import MainPage from "./routes/MainPage";
 import Login from "./routes/Login";
+import Register from "./routes/Register";
 import "./index.css";
 
 const AppContainer: React.FC = () => {
@@ -19,6 +20,10 @@ const AppContainer: React.FC = () => {
         {
           path: "/login",
           element: <Login />,
+        },
+        {
+          path: "/register",
+          element: <Register />,
         },
       ],
     },

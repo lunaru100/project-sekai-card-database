@@ -1,4 +1,4 @@
-#loginContainer {
+#registerContainer {
   height: 80vh;
   width: 90vw;
   background-size: 100% auto;
@@ -10,7 +10,7 @@
   padding: 5vh 5vw;
 }
 
-#login {
+#register {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,21 +19,25 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 3vh 3vw;
-  gap: 2vh;
+  gap: 1.5vh;
   border-radius: 5vh;
-  height: 65vh;
+  height: 75vh;
 }
 
-#login > span {
+#register > span {
   text-align: center;
 }
 
-#loginTitle {
+#registerTitle {
   font-weight: 900;
   font-size: 6vh;
 }
 
-#loginText{
-    font-weight: 700;
-    font-size: 3vh;
+#registerText {
+  font-weight: 700;
+  font-size: 3vh;
+}
+
+#registerForm{
+    margin-top: 2vh;
 }

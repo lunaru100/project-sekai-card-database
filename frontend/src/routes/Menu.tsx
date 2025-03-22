@@ -32,7 +32,7 @@ function Menu() {
             </Link>
           </span>
           <span>
-            <Link to={"/signup"} className="links">
+            <Link to={"/register"} className="links">
               SIGN UP
             </Link>
           </span>
