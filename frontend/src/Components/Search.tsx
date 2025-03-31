@@ -1,5 +1,5 @@
 import "./Search.css";
-import lupa from "../../assets/lupa.png";
+import lupa from "../assets/lupa.png";
 
 function Search() {
   return (
