@@ -40,7 +40,7 @@ function CardView({ cardName, event, rarity, imgUrl }: Props) {
       return (
         <>
           {Array.from({ length: rarity }).map((_, index) => (
-            <Star key={index}/>
+            <Star key={index} />
           ))}
         </>
       );
@@ -51,12 +51,7 @@ function CardView({ cardName, event, rarity, imgUrl }: Props) {
 
   return (
     <div id="cardView" ref={containerRef} onLoad={handleContainerLoad}>
-      <img
-        ref={imgRef}
-        onLoad={handleImageLoad}
-        src="/shiho.png"
-        id="cardImg"
-      />
+      <img ref={imgRef} onLoad={handleImageLoad} src={imgUrl} id="cardImg" />
       <div id="infoHolder" style={{ height: contHeight - height }}>
         <div className="cardInfoHolders">
           <span id="cardNameLabel" className="cardLabels">

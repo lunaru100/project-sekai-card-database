@@ -1,5 +1,5 @@
 #cardList {
-  width: 100vw;
+  max-width: 100vw;
   min-height: 85vh;
   padding: 2.5vh 10vw;
   display: flex;
@@ -57,7 +57,7 @@
 #cardHolder {
   display: flex;
   flex-wrap: wrap;
-  gap: 1vh; 
-  justify-content: space-between;
-  width: 90%;
+  column-gap: 1.25vw;
+  row-gap: 1.25vw;
+  width: 70vw;
 }

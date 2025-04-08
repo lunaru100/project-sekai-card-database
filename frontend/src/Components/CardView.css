@@ -1,7 +1,7 @@
 #cardView {
   background: radial-gradient(#0d2132 0%, #177683 100%);
   width: 22.5vw;
-  height: 35vh;
+  height: 40vh;
   border-radius: 2vh;
   padding: 2.5vh 0;
 }
@@ -15,7 +15,7 @@
 }
 
 #infoHolder {
-  width: 92.5%;
+  width: 90%;
   display: flex;
   justify-self: center;
   justify-content: center;

@@ -9,6 +9,7 @@ interface Card {
   event: string;
   rarity: number;
   imgUrl: string;
+  imgTrainedUrl?: string;
 }
 
 function createCard(
@@ -23,10 +24,10 @@ function createCard(
 
 function CardList() {
   const cards = [
-    createCard("bdhbhsnjnsj", "AAAA", "dfghfjeksl", 4, "jnfbhbf.png"),
-    createCard("momkmmmomo", "AAAA", "dfghfjeksl", 5, "jnfbhbf.png"),
-    createCard("mkmkaksmaksma", "AAAA", "dfghfjeksl", 4, "jnfbhbf.png"),
-    createCard("bvnxbbxnvnx", "AAAA", "dfghfjeksl", 5, "jnfbhbf.png"),
+    createCard("bdhbhsnjnsj", "AAAA", "dfghfjeksl", 4, "/shiho.png"),
+    createCard("momkmmmomo", "AAAA", "dfghfjeksl", 5, "/shiho.png"),
+    createCard("mkmkaksmaksma", "AAAA", "dfghfjeksl", 4, "/shiho.png"),
+    createCard("bvnxbbxnvnx", "AAAA", "dfghfjeksl", 5, "/shiho.png"),
   ];
   return (
     <div id="cardList">
