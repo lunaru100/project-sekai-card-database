@@ -1,5 +1,5 @@
 import "./Login.css";
-import "./Classes.css";
+import "../Classes.css";
 import bg from "./../assets/rui_login_bg.jpg";
 
 function Login() {

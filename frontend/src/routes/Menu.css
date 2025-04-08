@@ -1,7 +1,7 @@
 #menuContainer {
   background-color: #0d2133;
   color: white;
-  width: 94vw;
+  width: 100vw;
   padding: 0 3vw;
   position: fixed;
   top: 0;
@@ -9,6 +9,7 @@
   height: 10vh;
   display: flex;
   justify-content: space-between;
+  z-index: 3;
 }
 
 #mainMenu {
@@ -37,12 +38,12 @@
   margin-top: 10vh;
 }
 
-.links{
+.links {
   color: white;
   text-decoration: none;
 }
 
-.links:visited{
+.links:visited {
   color: white;
   text-decoration: none;
 }

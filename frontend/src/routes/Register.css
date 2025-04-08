@@ -1,6 +1,6 @@
 #registerContainer {
-  height: 80vh;
-  width: 90vw;
+  height: 90vh;
+  width: 100vw;
   background-size: 100% auto;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -21,7 +21,7 @@
   padding: 3vh 3vw;
   gap: 1.5vh;
   border-radius: 5vh;
-  height: 75vh;
+  height: 81vh;
 }
 
 #register > span {

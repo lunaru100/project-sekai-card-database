@@ -1,8 +1,33 @@
 import "./CardList.css";
+import "../Classes.css";
 import Search from "../Components/Search";
-import "./Classes.css";
+import CardView from "../Components/CardView";
+
+interface Card {
+  cardId: string;
+  cardName: string;
+  event: string;
+  rarity: number;
+  imgUrl: string;
+}
+
+function createCard(
+  cardId: string,
+  cardName: string,
+  event: string,
+  rarity: number,
+  imgUrl: string
+): Card {
+  return { cardId, cardName, event, rarity, imgUrl };
+}
 
 function CardList() {
+  const cards = [
+    createCard("bdhbhsnjnsj", "AAAA", "dfghfjeksl", 4, "jnfbhbf.png"),
+    createCard("momkmmmomo", "AAAA", "dfghfjeksl", 5, "jnfbhbf.png"),
+    createCard("mkmkaksmaksma", "AAAA", "dfghfjeksl", 4, "jnfbhbf.png"),
+    createCard("bvnxbbxnvnx", "AAAA", "dfghfjeksl", 5, "jnfbhbf.png"),
+  ];
   return (
     <div id="cardList">
       <span id="cardListHeader">
@@ -87,6 +112,17 @@ function CardList() {
           Filter
         </button>
         <Search />
+      </div>
+      <div id="cardHolder">
+        {cards.map((card) => (
+          <CardView
+            key={card.cardId}
+            cardName={card.cardName}
+            imgUrl={card.imgUrl}
+            event={card.event}
+            rarity={card.rarity}
+          />
+        ))}
       </div>
     </div>
   );

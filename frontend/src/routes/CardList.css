@@ -1,5 +1,5 @@
 #cardList {
-  width: 80vw;
+  width: 100vw;
   min-height: 85vh;
   padding: 2.5vh 10vw;
   display: flex;
@@ -18,13 +18,16 @@
 #searchAndFilters {
   width: 70vw;
   display: flex;
-  justify-content: center;
-  gap: 7vw;
+  justify-content: space-between;
   align-items: center;
 }
 
 #searchAndFilters > #search {
   height: auto;
+}
+
+#searchAndFilters > #search > #searchForm > #searchBar {
+  width: 35vw;
 }
 
 #searchAndFilters > #search > form > input {
@@ -41,6 +44,7 @@
   border-radius: 10vh;
   font-size: 3vh;
   font-weight: 600;
+  width: 15vw;
 }
 
 #filterBtn > svg {
@@ -48,4 +52,12 @@
   top: 50;
   left: 0.5vw;
   height: 3vh;
+}
+
+#cardHolder {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vh; 
+  justify-content: space-between;
+  width: 90%;
 }

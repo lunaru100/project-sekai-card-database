@@ -1,5 +1,5 @@
 import "./Register.css";
-import "./Classes.css";
+import "../Classes.css"
 import bg from "./../assets/luka_register_bg.jpg";
 
 function Register() {

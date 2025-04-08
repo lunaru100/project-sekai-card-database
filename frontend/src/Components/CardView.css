@@ -1,0 +1,51 @@
+#cardView {
+  background: radial-gradient(#0d2132 0%, #177683 100%);
+  width: 22.5vw;
+  height: 35vh;
+  border-radius: 2vh;
+  padding: 2.5vh 0;
+}
+
+#cardImg {
+  border-radius: 2vh;
+  width: 90%;
+  display: flex;
+  justify-self: center;
+  margin-bottom: 2.5vh;
+}
+
+#infoHolder {
+  width: 92.5%;
+  display: flex;
+  justify-self: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+#rarityHolder{
+  display: flex;
+  align-items: center;
+}
+
+.starOrRibbon {
+  height: 2vh;
+  width: auto;
+}
+
+.cardInfoHolders {
+  display: flex;
+  gap: 0.5vw;
+}
+
+.cardLabels {
+  font-weight: 700;
+}
+
+.actualNames {
+  font-weight: 400;
+}
+
+.cardInfoHolders > span {
+  font-size: 2vh;
+}
