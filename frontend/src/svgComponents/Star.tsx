@@ -5,7 +5,7 @@ const Star = () => {
       width="57.827"
       height="55.615"
       viewBox="0 0 57.827 55.615"
-      className="starOrRibbon"
+      className="h-[2vh] w-auto"
     >
       <defs>
         <filter

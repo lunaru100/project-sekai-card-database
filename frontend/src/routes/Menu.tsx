@@ -1,44 +1,35 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import "./Menu.css";
-import { Link } from "react-router-dom";
+import { MenuLink } from "../Components/MenuLink";
 
 function Menu() {
   const navigate = useNavigate();
   return (
-    <div id="menu">
-      <div id="menuContainer">
-        <div id="mainMenu">
+    <div>
+      <div className="bg-[#0d2133] w-screen fixed h-[10vh] flex justify-between z-3 !px-[3vw] py-0 left-0 top-0">
+        <div className="flex items-center w-[40vw] h-[10vh] gap-[5vw] justify-start">
           <img
-            id="logo"
+            className="h-[6vh] cursor-pointer"
             src="/logo_PS.svg"
             alt="logo"
             onClick={() => navigate("/")}
           />
           <span>
-            <Link to={"/cards"} className="links">
-              CARDS
-            </Link>
+            <MenuLink to="/cards">CARDS</MenuLink>
           </span>
           <span>
-            <Link to={"/news"} className="links">
-              GAME NEWS
-            </Link>
+            <MenuLink to="/news">GAME NEWS</MenuLink>
           </span>
         </div>
-        <div id="loginMenu">
+        <div className="flex items-center w-[20vw] h-[10vh] gap-[5vw] justify-end">
           <span>
-            <Link to={"/login"} className="links">
-              LOG IN
-            </Link>
+            <MenuLink to="/login">LOG IN</MenuLink>
           </span>
           <span>
-            <Link to={"/register"} className="links">
-              SIGN UP
-            </Link>
+            <MenuLink to="/register">SIGN UP</MenuLink>
           </span>
         </div>
       </div>
-      <div id="outlet">
+      <div className="!mt-[10vh]">
         <Outlet />
       </div>
     </div>
