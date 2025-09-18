@@ -1,10 +1,12 @@
 import "./Login.css";
 import "../Classes.css";
-import bg from "./../assets/rui_login_bg.jpg";
 
 function Login() {
   return (
-    <div id="loginContainer" style={{ backgroundImage: `url(${bg})` }}>
+    <div
+      id="loginContainer"
+      style={{ backgroundImage: `url(/tsukasa_login_bg.png)` }}
+    >
       <div id="login">
         <span id="loginTitle">LOGIN</span>
         <span id="loginText">
