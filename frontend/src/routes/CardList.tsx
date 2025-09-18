@@ -38,16 +38,22 @@ function CardList() {
       "mkmkaksmaksma",
       "AAAA",
       "dfghfjeksl",
-      4,
+      3,
       "/shiho.png",
       "/shiho2.png"
     ),
-    createCard("bvnxbbxnvnx", "AAAA", "dfghfjeksl", 5, "/shiho.png"),
+    createCard("bvnxbbxnvnx", "AAAA", "dfghfjeksl", 2, "/shiho.png"),
   ];
   return (
     <div id="cardList">
       <span id="cardListHeader">
-        SEE <span style={{ fontWeight: 300, fontStyle: "normal" }}>ALL</span>{" "}
+        SEE{" "}
+        <span
+          className="font-light"
+          style={{ fontWeight: 300, fontStyle: "normal" }}
+        >
+          ALL
+        </span>{" "}
         CARDS
       </span>
       <div id="searchAndFilters">
