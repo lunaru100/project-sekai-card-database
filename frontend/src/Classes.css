@@ -1,19 +1,11 @@
 @import "tailwindcss";
 
-
 .btnContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  @apply w-full flex justify-center;
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1.5vh;
-  margin-top: 3vh;
-  width: 22vw;
+  @apply flex flex-col justify-center gap-[1.5vh] w-[22vw] mt-[3vh];
 }
 
 .formBtn {
@@ -21,16 +13,9 @@
 }
 
 .labels {
-  font-size: 1.75vh;
-  margin-left: 2vh;
+  @apply text-[1.75vh] ml-[2vh];
 }
 
 .inputs {
-  background: rgba(255, 255, 255, 0.6);
-  border: none;
-  outline: none;
-  border-radius: 2vh;
-  height: 4.5vh;
-  width: 22vw;
-  padding: 1vh 1vw;
+  @apply h-[4.5vh] w-[22vw] px-[1vw] py-[1vh] rounded-[2vh] border-[none] bg-white/50 outline-none;
 }
