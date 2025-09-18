@@ -1,4 +1,3 @@
-import "./CardList.css";
 import "../Classes.css";
 import Search from "../Components/Search";
 import CardView from "../Components/CardView";
@@ -27,36 +26,57 @@ function CardList() {
   const cards = [
     createCard(
       "bdhbhsnjnsj",
-      "AAAA",
-      "dfghfjeksl",
+      "Dive Into Despair",
+      "Deep Dark For Light",
       4,
-      "/shiho.png",
-      "/shiho2.png"
+      "/tsukasa.png",
+      "/tsukasa2.png"
     ),
-    createCard("momkmmmomo", "AAAA", "dfghfjeksl", 5, "/shiho.png"),
     createCard(
-      "mkmkaksmaksma",
-      "AAAA",
-      "dfghfjeksl",
+      "momkmmmomo",
+      "Smile Fairy",
+      "Deep Dark For Light",
       4,
-      "/shiho.png",
-      "/shiho2.png"
+      "/emu.png",
+      "/emu2.png"
     ),
-    createCard("bvnxbbxnvnx", "AAAA", "dfghfjeksl", 5, "/shiho.png"),
+    createCard(
+      "bvnxbbxnvnx",
+      "Crafting Props With Heartfelt Care",
+      "Deep Dark For Light",
+      4,
+      "/rui.png",
+      "/rui2.png"
+    ),
+    createCard(
+      "bvnxbbxnvnx",
+      "Hop, Step, and Hello!",
+      "Deep Dark For Light",
+      3,
+      "/miku.png",
+      "/miku2.png"
+    ),
+    createCard(
+      "bvnxbbxnvnx",
+      "Childhood Days Princess",
+      "Deep Dark For Light",
+      2,
+      "/nene.png"
+    ),
   ];
   return (
-    <div id="cardList">
-      <span id="cardListHeader">
-        SEE <span style={{ fontWeight: 300, fontStyle: "normal" }}>ALL</span>{" "}
-        CARDS
+    <div className="max-w-[100vw] min-h-[85vh] flex flex-col items-center gap-[5vh] px-[10vw] py-[2.5vh]">
+      <span className="text-center font-black text-[7vh] mt-[3vh]">
+        SEE <span className="font-light not-italic">ALL</span> CARDS
       </span>
-      <div id="searchAndFilters">
-        <button className="formBtn" id="filterBtn">
+      <div className="w-[70vw] flex justify-between items-center">
+        <button className="flex items-center justify-center shadow-[0px_1vh_6px_0px_rgb(14,44,45)] relative !text-[3vh] !w-[15vw] !m-0 !rounded-[10vh] formBtn">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="39.203"
             height="35.199"
             viewBox="0 0 39.203 35.199"
+            className="absolute h-[3vh] left-[0.5vw] top-[50]"
           >
             <g id="filltry" transform="translate(-145.26 -213.53)">
               <rect
@@ -129,7 +149,7 @@ function CardList() {
         </button>
         <Search />
       </div>
-      <div id="cardHolder">
+      <div className="flex flex-wrap gap-x-[1.25vw] gap-y-[1.25vw] w-[70vw]">
         {cards.map((card) => (
           <CardView
             key={card.cardId}

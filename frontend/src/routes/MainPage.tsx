@@ -6,7 +6,7 @@ function MainPage() {
   return (
     <div id="mainPage" style={{ backgroundImage: `url(${bg})` }}>
       <span id="slogan">HAVE AN ACE UP YOUR SLEEVE</span>
-      <Search />
+      <Search height="h-[50vh]" />
     </div>
   );
 }

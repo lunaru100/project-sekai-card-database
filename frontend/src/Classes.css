@@ -1,3 +1,6 @@
+@import "tailwindcss";
+
+
 .btnContainer {
   width: 100%;
   display: flex;
@@ -14,17 +17,7 @@
 }
 
 .formBtn {
-  background-image: linear-gradient(#157f84, #0b4042);
-  border: none;
-  outline: none;
-  border-radius: 2vh;
-  color: white;
-  width: 13vw;
-  height: 5.5vh;
-  margin-top: 5vh;
-  margin-bottom: 2vh;
-  font-weight: 600;
-  font-size: 2vh;
+  @apply bg-[linear-gradient(#157f84,#0b4042)] text-white w-[13vw] h-[5.5vh] font-semibold text-[2vh] mt-[5vh] mb-[2vh] rounded-[2vh] border-0 outline-none;
 }
 
 .labels {
