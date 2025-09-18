@@ -1,10 +1,12 @@
 import "./Register.css";
-import "../Classes.css"
-import bg from "./../assets/luka_register_bg.jpg";
+import "../Classes.css";
 
 function Register() {
   return (
-    <div id="registerContainer" style={{ backgroundImage: `url(${bg})` }}>
+    <div
+      id="registerContainer"
+      style={{ backgroundImage: `url(/luka_register_bg.png)` }}
+    >
       <div id="register">
         <span id="registerTitle">SIGN UP</span>
         <span id="registerText">

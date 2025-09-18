@@ -1,5 +1,3 @@
-import lupa from "../assets/lupa.png";
-
 interface Props {
   width?: string;
   bgColor?: string;
@@ -25,7 +23,7 @@ function Search({
           `}
         />
         <img
-          src={lupa}
+          src="/lupa.png"
           className="absolute h-[4vh] top-[20%] left-[2%] pointer-events-none"
         />
       </form>
