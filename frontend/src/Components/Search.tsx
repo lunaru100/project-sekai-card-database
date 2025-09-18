@@ -1,5 +1,3 @@
-import "./Search.css";
-
 interface Props {
   width?: string;
   bgColor?: string;
