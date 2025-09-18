@@ -17,16 +17,31 @@ function createCard(
   cardName: string,
   event: string,
   rarity: number,
-  imgUrl: string
+  imgUrl: string,
+  imgTrainedUrl?: string
 ): Card {
-  return { cardId, cardName, event, rarity, imgUrl };
+  return { cardId, cardName, event, rarity, imgUrl, imgTrainedUrl };
 }
 
 function CardList() {
   const cards = [
-    createCard("bdhbhsnjnsj", "AAAA", "dfghfjeksl", 4, "/shiho.png"),
+    createCard(
+      "bdhbhsnjnsj",
+      "AAAA",
+      "dfghfjeksl",
+      4,
+      "/shiho.png",
+      "/shiho2.png"
+    ),
     createCard("momkmmmomo", "AAAA", "dfghfjeksl", 5, "/shiho.png"),
-    createCard("mkmkaksmaksma", "AAAA", "dfghfjeksl", 4, "/shiho.png"),
+    createCard(
+      "mkmkaksmaksma",
+      "AAAA",
+      "dfghfjeksl",
+      4,
+      "/shiho.png",
+      "/shiho2.png"
+    ),
     createCard("bvnxbbxnvnx", "AAAA", "dfghfjeksl", 5, "/shiho.png"),
   ];
   return (
@@ -122,6 +137,9 @@ function CardList() {
             imgUrl={card.imgUrl}
             event={card.event}
             rarity={card.rarity}
+            {...(card.imgTrainedUrl
+              ? { imgUrlTrained: card.imgTrainedUrl }
+              : {})}
           />
         ))}
       </div>

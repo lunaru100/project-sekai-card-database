@@ -8,9 +8,10 @@ interface Props {
   event: string;
   rarity: number;
   imgUrl: string;
+  imgUrlTrained?: string;
 }
 
-function CardView({ cardName, event, rarity, imgUrl }: Props) {
+function CardView({ cardName, event, rarity, imgUrl, imgUrlTrained }: Props) {
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -35,6 +36,18 @@ function CardView({ cardName, event, rarity, imgUrl }: Props) {
     }
   };
 
+  const handleImgMouseEnter = () => {
+    console.log(imgUrlTrained);
+    if (imgUrlTrained) {
+      imgRef.current!.src = imgUrlTrained;
+    }
+  };
+  const handleImgMouseLeave = () => {
+    if (imgUrlTrained) {
+      imgRef.current!.src = imgUrl;
+    }
+  };
+
   const StarOrRibbon = ({ rarity }: { rarity: number }) => {
     if (rarity < 5) {
       return (
@@ -51,7 +64,16 @@ function CardView({ cardName, event, rarity, imgUrl }: Props) {
 
   return (
     <div id="cardView" ref={containerRef} onLoad={handleContainerLoad}>
-      <img ref={imgRef} onLoad={handleImageLoad} src={imgUrl} id="cardImg" />
+      <div id="imgHolder">
+        <img
+          ref={imgRef}
+          onLoad={handleImageLoad}
+          onMouseEnter={handleImgMouseEnter}
+          onMouseLeave={handleImgMouseLeave}
+          src={imgUrl}
+          id="cardImg"
+        />
+      </div>
       <div id="infoHolder" style={{ height: contHeight - height }}>
         <div className="cardInfoHolders">
           <span id="cardNameLabel" className="cardLabels">
