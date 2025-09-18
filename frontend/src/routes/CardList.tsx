@@ -26,6 +26,45 @@ function CardList() {
   const cards = [
     createCard(
       "bdhbhsnjnsj",
+      "A Moment Filled With Warmth",
+      "And So, the Clock Hands Started Ticking",
+      4,
+      "/mafuyu.png",
+      "/mafuyu2.png"
+    ),
+    createCard(
+      "bdhbhsnjnsj",
+      "A Room That's Now Empty",
+      "And So, the Clock Hands Started Ticking",
+      4,
+      "/kanade.png",
+      "/kanade2.png"
+    ),
+    createCard(
+      "bdhbhsnjnsj",
+      "Leaning in Close to the Pain",
+      "And So, the Clock Hands Started Ticking",
+      4,
+      "/len.png",
+      "/len2.png"
+    ),
+    createCard(
+      "bdhbhsnjnsj",
+      "So That We Can Be by Your Side",
+      "And So, the Clock Hands Started Tickingt",
+      3,
+      "/mizuki.png",
+      "/mizuki2.png"
+    ),
+    createCard(
+      "sdfdgfhggfgdmhyhg",
+      "Wearing Matching Bracelets",
+      "And So, the Clock Hands Started Ticking",
+      2,
+      "/ena.png"
+    ),
+    createCard(
+      "bdhbhsnjnsj",
       "Dive Into Despair",
       "Deep Dark For Light",
       4,

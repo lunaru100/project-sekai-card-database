@@ -5,7 +5,7 @@ const Ribbon = () => {
       width="56.926"
       height="35.713"
       viewBox="0 0 56.926 35.713"
-      className="starOrRibbon"
+      className="h-[2vh] w-auto"
     >
       <g id="bow" transform="translate(-117.219 -229.917)">
         <path
