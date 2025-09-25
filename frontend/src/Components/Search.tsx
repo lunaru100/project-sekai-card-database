@@ -17,7 +17,7 @@ function Search({
           className={`
             ${width}
             outline-none border-none rounded-[20px]
-            py-[2vh] px-[7.5vh] h-[6vh] text-[2.5vh]
+            !py-[2vh] !px-[7.5vh] h-[6vh] text-[2.5vh]
             ${bgColor} 
             backdrop-blur-sm text-[#0d2133]
           `}
