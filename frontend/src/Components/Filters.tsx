@@ -18,6 +18,8 @@ function Filters() {
 
   const attributes = ["COOL", "CUTE", "PURE", "HAPPY", "MYSTERIOUS"];
 
+  const costume = ["YES, WITH HAIRSTYLE", "YES, NO HAIRSTYLE", "NONE"];
+
   const characters: string[] = [
     "Airi Momoi",
     "Akito Shinonome",
@@ -110,6 +112,20 @@ function Filters() {
           ))}
         </div>
       </div>
+      <div className="flex flex-col gap-2">
+        <span className="formLabel">COSTUME</span>
+        <div className="flex flex-col gap-2">
+          {costume.map((costume) => (
+            <Checkbox
+              key={costume}
+              label={costume}
+              checked={selected.includes(costume)}
+              onChange={() => toggleUnit(costume)}
+            />
+          ))}
+        </div>
+      </div>
+      
     </div>
   );
 }
