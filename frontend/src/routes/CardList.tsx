@@ -106,11 +106,16 @@ function CardList() {
     ),
   ];
   const [showFilters, setShowFilters] = useState(false);
+  const mainWidth = showFilters ? "80vw" : "100vw";
+  const marginLeft = showFilters ? "20vw" : "0vw";
 
   return (
-    <div>
+    <div className="flex">
       {showFilters && <Filters />}
-      <div className="max-w-[100vw] min-h-[85vh] flex flex-col items-center gap-[5vh] px-[10vw] py-[2.5vh]">
+      <div
+        className="min-h-[85vh] flex flex-col items-center gap-[5vh] px-[10vw] py-[2.5vh]"
+        style={{ width: mainWidth, marginLeft: marginLeft }}
+      >
         <span className="text-center font-black text-[7vh] mt-[3vh]">
           SEE <span className="font-light not-italic">ALL</span> CARDS
         </span>

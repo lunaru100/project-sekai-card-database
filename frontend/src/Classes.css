@@ -23,3 +23,16 @@
 .formLabel {
   @apply text-xl font-bold;
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4d2633;
+  border-radius: 3px;
+}

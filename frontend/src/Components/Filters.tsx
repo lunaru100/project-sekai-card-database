@@ -60,81 +60,83 @@ function Filters() {
   };
 
   return (
-    <div className="flex flex-col gap-7 w-[20vw] min-h-[90vh] bg-gradient-to-b from-[#572C3C] to-[#DD0B34] !p-5">
-      <div className="flex flex-col gap-2">
-        <span className="formLabel">CHARACTERS</span>
-        <MultiSelect
-          options={characters}
-          selected={characterSelected}
-          setSelected={setCharacterSelected}
-        />
-      </div>
-      <div className="flex flex-col gap-2">
-        <span className="formLabel">UNIT</span>
-        <div className="flex flex-col gap-2">
-          {units.map((unit) => (
-            <Checkbox
-              key={unit}
-              label={unit}
-              checked={selected.includes(unit)}
-              onChange={() => toggleUnit(unit)}
-            />
-          ))}
+    <div className="flex flex-col gap-7 w-[20vw] h-[90vh] bg-gradient-to-b from-[#572C3C] to-[#DD0B34] !p-5 !pr-0 fixed top-[10vh] left-0">
+      <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col gap-7 !mb-2">
+        <div className="flex flex-col gap-2 !pr-5">
+          <span className="formLabel">CHARACTERS</span>
+          <MultiSelect
+            options={characters}
+            selected={characterSelected}
+            setSelected={setCharacterSelected}
+          />
+        </div>
+        <div className="flex flex-col gap-2 !pr-5">
+          <span className="formLabel">UNIT</span>
+          <div className="flex flex-col gap-2">
+            {units.map((unit) => (
+              <Checkbox
+                key={unit}
+                label={unit}
+                checked={selected.includes(unit)}
+                onChange={() => toggleUnit(unit)}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 !pr-5">
+          <span className="formLabel">RARITY</span>
+          <div className="flex flex-col gap-2">
+            {rarity.map((rarity) => (
+              <Checkbox
+                key={rarity}
+                label={rarity}
+                checked={selectedRarity.includes(rarity)}
+                onChange={() => toggleRarity(rarity)}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 !pr-5">
+          <span className="formLabel">AVAILABILITY</span>
+          <div className="flex flex-col gap-2">
+            {availability.map((availability) => (
+              <Checkbox
+                key={availability}
+                label={availability}
+                checked={selected.includes(availability)}
+                onChange={() => toggleUnit(availability)}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 !pr-5">
+          <span className="formLabel">ATTRIBUTES</span>
+          <div className="flex flex-col gap-2">
+            {attributes.map((attributes) => (
+              <Checkbox
+                key={attributes}
+                label={attributes}
+                checked={selected.includes(attributes)}
+                onChange={() => toggleUnit(attributes)}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2 !pr-5">
+          <span className="formLabel">COSTUME</span>
+          <div className="flex flex-col gap-2">
+            {costume.map((costume) => (
+              <Checkbox
+                key={costume}
+                label={costume}
+                checked={selected.includes(costume)}
+                onChange={() => toggleUnit(costume)}
+              />
+            ))}
+          </div>
         </div>
       </div>
-      <div className="flex flex-col gap-2">
-        <span className="formLabel">RARITY</span>
-        <div className="flex flex-col gap-2">
-          {rarity.map((rarity) => (
-            <Checkbox
-              key={rarity}
-              label={rarity}
-              checked={selectedRarity.includes(rarity)}
-              onChange={() => toggleRarity(rarity)}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="flex flex-col gap-2">
-        <span className="formLabel">AVAILABILITY</span>
-        <div className="flex flex-col gap-2">
-          {availability.map((availability) => (
-            <Checkbox
-              key={availability}
-              label={availability}
-              checked={selected.includes(availability)}
-              onChange={() => toggleUnit(availability)}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="flex flex-col gap-2">
-        <span className="formLabel">ATTRIBUTES</span>
-        <div className="flex flex-col gap-2">
-          {attributes.map((attributes) => (
-            <Checkbox
-              key={attributes}
-              label={attributes}
-              checked={selected.includes(attributes)}
-              onChange={() => toggleUnit(attributes)}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="flex flex-col gap-2">
-        <span className="formLabel">COSTUME</span>
-        <div className="flex flex-col gap-2">
-          {costume.map((costume) => (
-            <Checkbox
-              key={costume}
-              label={costume}
-              checked={selected.includes(costume)}
-              onChange={() => toggleUnit(costume)}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="flex gap-4 !mb-2">
+      <div className="flex gap-4 !mb-2 !pr-5">
         <button
           className="formBtn !w-[50%] !m-0"
           onClick={() => {
