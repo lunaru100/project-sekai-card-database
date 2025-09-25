@@ -42,11 +42,20 @@ function Filters() {
   ];
 
   const [selected, setSelected] = useState<string[]>([]);
+  const [selectedRarity, setSelectedRarity] = useState<string[]>([]);
   const [characterSelected, setCharacterSelected] = useState<string[]>([]);
 
   const toggleUnit = (unit: string) => {
     setSelected((prev) =>
       prev.includes(unit) ? prev.filter((u) => u !== unit) : [...prev, unit]
+    );
+  };
+
+  const toggleRarity = (rarity: string) => {
+    setSelectedRarity((prev) =>
+      prev.includes(rarity)
+        ? prev.filter((r) => r !== rarity)
+        : [...prev, rarity]
     );
   };
 
@@ -80,8 +89,8 @@ function Filters() {
             <Checkbox
               key={rarity}
               label={rarity}
-              checked={selected.includes(rarity)}
-              onChange={() => toggleUnit(rarity)}
+              checked={selectedRarity.includes(rarity)}
+              onChange={() => toggleRarity(rarity)}
             />
           ))}
         </div>
@@ -125,7 +134,19 @@ function Filters() {
           ))}
         </div>
       </div>
-      
+      <div className="flex gap-4 !mb-2">
+        <button
+          className="formBtn !w-[50%] !m-0"
+          onClick={() => {
+            setSelected([]);
+            setCharacterSelected([]);
+            setSelectedRarity([]);
+          }}
+        >
+          RESET
+        </button>
+        <button className="formBtn !w-[50%] !m-0">APPLY</button>
+      </div>
     </div>
   );
 }
