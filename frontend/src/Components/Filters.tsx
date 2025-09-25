@@ -13,6 +13,8 @@ function Filters() {
 
   const rarity = ["1 STAR", "2 STAR", "3 STAR", "4 STAR", "BIRTHDAY"];
 
+  const availability = ["PERMANENT", "LIMITED", "BIRTHDAY", "COLLAB"];
+
   const [selected, setSelected] = useState<string[]>([]);
 
   const toggleUnit = (unit: string) => {
@@ -45,6 +47,19 @@ function Filters() {
               label={rarity}
               checked={selected.includes(rarity)}
               onChange={() => toggleUnit(rarity)}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="formLabel">AVAILABILITY</span>
+        <div className="flex flex-col gap-2">
+          {availability.map((availability) => (
+            <Checkbox
+              key={availability}
+              label={availability}
+              checked={selected.includes(availability)}
+              onChange={() => toggleUnit(availability)}
             />
           ))}
         </div>
