@@ -1,4 +1,5 @@
 import Checkbox from "./Checkbox";
+import MultiSelect from "./MultiSelect";
 import { useState } from "react";
 
 function Filters() {
@@ -15,7 +16,31 @@ function Filters() {
 
   const availability = ["PERMANENT", "LIMITED", "BIRTHDAY", "COLLAB"];
 
+  const attributes = ["COOL", "CUTE", "PURE", "HAPPY", "MYSTERIOUS"];
+
+  const characters: string[] = [
+    "Airi Momoi",
+    "Akito Shinonome",
+    "An Shiraishi",
+    "Ena Shinonome",
+    "Haruka Kiritani",
+    "Honami Mochizuki",
+    "Ichika Hoshino",
+    "Kohane Azusawa",
+    "Mafuyu Asahina",
+    "Minori Hanasato",
+    "Mizuki Akiyama",
+    "Nene Kusanagi",
+    "Rui Kamishiro",
+    "Saki Tenma",
+    "Shiho Hinomori",
+    "Shizuku Hinomori",
+    "Toya Aoyagi",
+    "Tsukasa Tenma",
+  ];
+
   const [selected, setSelected] = useState<string[]>([]);
+  const [characterSelected, setCharacterSelected] = useState<string[]>([]);
 
   const toggleUnit = (unit: string) => {
     setSelected((prev) =>
@@ -25,6 +50,14 @@ function Filters() {
 
   return (
     <div className="flex flex-col gap-7 w-[20vw] min-h-[90vh] bg-gradient-to-b from-[#572C3C] to-[#DD0B34] !p-5">
+      <div className="flex flex-col gap-2">
+        <span className="formLabel">CHARACTERS</span>
+        <MultiSelect
+          options={characters}
+          selected={characterSelected}
+          setSelected={setCharacterSelected}
+        />
+      </div>
       <div className="flex flex-col gap-2">
         <span className="formLabel">UNIT</span>
         <div className="flex flex-col gap-2">
@@ -60,6 +93,19 @@ function Filters() {
               label={availability}
               checked={selected.includes(availability)}
               onChange={() => toggleUnit(availability)}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-2">
+        <span className="formLabel">ATTRIBUTES</span>
+        <div className="flex flex-col gap-2">
+          {attributes.map((attributes) => (
+            <Checkbox
+              key={attributes}
+              label={attributes}
+              checked={selected.includes(attributes)}
+              onChange={() => toggleUnit(attributes)}
             />
           ))}
         </div>
