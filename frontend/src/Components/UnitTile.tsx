@@ -5,9 +5,12 @@ interface Props {
 
 function UnitTile({ img, name }: Props) {
   return (
-    <div className="flex flex-col items-center gap-[1vh] cursor-pointer rounded-2xl w-[20vw] bg-white/30 !p-2">
-      <img className="rounded-2xl" src={img} alt={name} />
-      <span>{name}</span>
+    <div className="cursor-pointer p-3 !m-2 max-w-[25vw]">
+      <img
+        className="rounded-2xl w-full h-auto object-contain"
+        src={img}
+        alt={name}
+      />
     </div>
   );
 }
