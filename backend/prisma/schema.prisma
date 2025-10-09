@@ -1,0 +1,102 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Card {
+  CardId           String   @id @default(uuid())
+  CardName         String
+  CharacterId      String
+  UnitId           String
+  RarityId         String
+  AvailabilityId   String
+  CostumeId        String
+  ReleaseDate      DateTime
+  CardImg          String
+  CardImgTrained   String
+  AttributeId      String
+  EventId          String
+  GachaId          String
+  SkillId          String
+
+  //Relations:
+
+  Character        Character   @relation(fields: [CharacterId], references: [CharacterId])
+  Unit             Unit       @relation(fields: [UnitId], references: [UnitId])
+  Rarity           Rarity      @relation(fields: [RarityId], references: [RarityId])
+  Availability     Availability @relation(fields: [AvailabilityId], references: [AvailabilityId])
+  Costume          Costume     @relation(fields: [CostumeId], references: [CostumeId])
+  Attribute        Attribute   @relation(fields: [AttributeId], references: [AttributeId])
+  Event            Event       @relation(fields: [EventId], references: [EventId])
+  Gacha            Gacha       @relation(fields: [GachaId], references: [GachaId])
+  Skill            Skill       @relation(fields: [SkillId], references: [SkillId])
+}
+
+model Character {
+  CharacterId   String   @id @default(uuid())
+  CharacterName String
+
+  Cards         Card[]
+}
+
+model Unit {
+  UnitId    String   @id @default(uuid())
+  UnitName  String
+
+  Cards     Card[]
+}
+
+model Rarity {
+  RarityId  String   @id @default(uuid())
+  Rarity    String
+
+  Cards     Card[]
+}
+
+model Availability {
+  AvailabilityId  String   @id @default(uuid())
+  Availability    String
+
+  Cards           Card[]
+}
+
+model Costume {
+  CostumeId    String   @id @default(uuid())
+  CostumeName  String
+  CostumeType  String
+
+  Cards        Card[]
+}
+
+model Attribute {
+  AttributeId   String   @id @default(uuid())
+  AttributeName String
+
+  Cards         Card[]
+}
+
+model Event {
+  EventId    String   @id @default(uuid())
+  EventName  String
+
+  Cards      Card[]
+}
+
+model Gacha {
+  GachaId    String   @id @default(uuid())
+  GachaName  String
+
+  Cards      Card[]
+}
+
+model Skill {
+  SkillId     String   @id @default(uuid())
+  SkillName   String
+  SkillEffect String
+
+  Cards       Card[]
+}
