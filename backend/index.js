@@ -1,16 +1,13 @@
 import express from "express";
-import uploadRoute from "./routes/uploadRoute.js";
+import cardsRouter from "./routes/cards.js"; // note the .js extension!
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const app = express();
-
 app.use(express.json());
+app.use("/api", cardsRouter);
 
-app.use("/api", uploadRoute);
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(3000, () => {
+  console.log("Server started on port 3000");
 });
