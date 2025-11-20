@@ -1,10 +1,12 @@
 import express from "express";
-import cardsRouter from "./routes/cards.js"; // note the .js extension!
+import cors from "cors";
+import cardsRouter from "./routes/cards.js";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use("/api", cardsRouter);
 

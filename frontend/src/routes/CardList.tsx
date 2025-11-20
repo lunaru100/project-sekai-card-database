@@ -2,7 +2,7 @@ import "../Classes.css";
 import Search from "../Components/Search";
 import CardView from "../Components/CardView";
 import Filters from "../Components/Filters";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Card {
   cardId: string;
@@ -13,102 +13,45 @@ interface Card {
   imgTrainedUrl?: string;
 }
 
-function createCard(
-  cardId: string,
-  cardName: string,
-  event: string,
-  rarity: number,
-  imgUrl: string,
-  imgTrainedUrl?: string
-): Card {
-  return { cardId, cardName, event, rarity, imgUrl, imgTrainedUrl };
+const PAGE_SIZE = 30;
+
+function createCard(item: any): Card {
+  return {
+    cardId: item.CardId,
+    cardName: item.CardName,
+    event: item.Event?.EventName,
+    rarity: item.Rarity?.Rarity,
+    imgUrl: item.CardImg,
+    imgTrainedUrl: item.CardImgTrained,
+  };
 }
 
 function CardList() {
-  const cards = [
-    createCard(
-      "bdhbhsnjnsj",
-      "A Moment Filled With Warmth",
-      "And So, the Clock Hands Started Ticking",
-      4,
-      "/mafuyu.png",
-      "/mafuyu2.png"
-    ),
-    createCard(
-      "bdhbhsndsfsjnsj",
-      "A Room That's Now Empty",
-      "And So, the Clock Hands Started Ticking",
-      4,
-      "/kanade.png",
-      "/kanade2.png"
-    ),
-    createCard(
-      "bdhbhasassnjnsj",
-      "Leaning in Close to the Pain",
-      "And So, the Clock Hands Started Ticking",
-      4,
-      "/len.png",
-      "/len2.png"
-    ),
-    createCard(
-      "bdhbhsnjnsadwd",
-      "So That We Can Be by Your Side",
-      "And So, the Clock Hands Started Tickingt",
-      3,
-      "/mizuki.png",
-      "/mizuki2.png"
-    ),
-    createCard(
-      "sdfdgfhggfgdmhyhg",
-      "Wearing Matching Bracelets",
-      "And So, the Clock Hands Started Ticking",
-      2,
-      "/ena.png"
-    ),
-    createCard(
-      "bdhbhadasdsanjnsj",
-      "Dive Into Despair",
-      "Deep Dark For Light",
-      4,
-      "/tsukasa.png",
-      "/tsukasa2.png"
-    ),
-    createCard(
-      "momkmmmomo",
-      "Smile Fairy",
-      "Deep Dark For Light",
-      4,
-      "/emu.png",
-      "/emu2.png"
-    ),
-    createCard(
-      "bvnxbbxnvnx",
-      "Crafting Props With Heartfelt Care",
-      "Deep Dark For Light",
-      4,
-      "/rui.png",
-      "/rui2.png"
-    ),
-    createCard(
-      "bvxzczcxcnxbbxnvnx",
-      "Hop, Step, and Hello!",
-      "Deep Dark For Light",
-      3,
-      "/miku.png",
-      "/miku2.png"
-    ),
-    createCard(
-      "bvnxbbxnzczxcvnx",
-      "Childhood Days Princess",
-      "Deep Dark For Light",
-      2,
-      "/nene.png"
-    ),
-  ];
+  const [cards, setCards] = useState<Card[]>([]);
   const [showFilters, setShowFilters] = useState(false);
+  const [page, setPage] = useState(0);
+  const [total, setTotal] = useState(0);
   const mainWidth = showFilters ? "80vw" : "100vw";
   const marginLeft = showFilters ? "20vw" : "0vw";
 
+  useEffect(() => {
+    fetch(
+      `http://localhost:3000/api/allCards?skip=${
+        page * PAGE_SIZE
+      }&take=${PAGE_SIZE}`
+    )
+      .then((data) => data.json())
+      .then((json) => {
+        const { cards: rawCards, total } = json;
+        const cardArr = rawCards.map(createCard);
+        setTotal(total);
+        if (page === 0) {
+          setCards(cardArr); // replace on page 0
+        } else {
+          setCards((prev) => [...prev, ...cardArr]); // append for subsequent pages
+        }
+      });
+  }, [page]);
   return (
     <div className="flex">
       {showFilters && <Filters />}
@@ -216,6 +159,14 @@ function CardList() {
             />
           ))}
         </div>
+        {cards.length < total && (
+          <button
+            className="mt-0! mb-[3vh]! formBtn"
+            onClick={() => setPage(page + 1)}
+          >
+            Show More
+          </button>
+        )}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Star from "../svgComponents/Star";
 import Ribbon from "../svgComponents/Ribbon";
 
@@ -10,11 +10,30 @@ interface Props {
   imgUrlTrained?: string;
 }
 
+function normalizeImageUrl(url?: string) {
+  if (!url) return "";
+  return url.startsWith("//") ? `https:${url}` : url;
+}
+
 function CardView({ cardName, event, rarity, imgUrl, imgUrlTrained }: Props) {
   const imgRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
   const [contHeight, setContHeight] = useState(0);
+
+  const baseImgUrl = normalizeImageUrl(imgUrl);
+  const trainedImgUrl = normalizeImageUrl(imgUrlTrained);
+
+  console.log(baseImgUrl, trainedImgUrl);
+
+  useEffect(() => {
+    if (imgUrlTrained) {
+      const img = new window.Image();
+      img.src = imgUrlTrained.startsWith("//")
+        ? `https:${imgUrlTrained}`
+        : imgUrlTrained;
+    }
+  }, [imgUrlTrained]);
 
   const handleImageLoad = () => {
     if (imgRef.current) {
@@ -36,14 +55,13 @@ function CardView({ cardName, event, rarity, imgUrl, imgUrlTrained }: Props) {
   };
 
   const handleImgMouseEnter = () => {
-    console.log(imgUrlTrained);
-    if (imgUrlTrained) {
-      imgRef.current!.src = imgUrlTrained;
+    if (trainedImgUrl) {
+      imgRef.current!.src = trainedImgUrl;
     }
   };
   const handleImgMouseLeave = () => {
-    if (imgUrlTrained) {
-      imgRef.current!.src = imgUrl;
+    if (trainedImgUrl) {
+      imgRef.current!.src = baseImgUrl;
     }
   };
 
@@ -73,7 +91,7 @@ function CardView({ cardName, event, rarity, imgUrl, imgUrlTrained }: Props) {
           onLoad={handleImageLoad}
           onMouseEnter={handleImgMouseEnter}
           onMouseLeave={handleImgMouseLeave}
-          src={imgUrl}
+          src={baseImgUrl}
           className="w-[90%] flex justify-self-center !mb-[2.5vh] rounded-[2vh]"
         />
       </div>
