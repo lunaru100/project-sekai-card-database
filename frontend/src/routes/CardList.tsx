@@ -3,6 +3,7 @@ import Search from "../Components/Search";
 import CardView from "../Components/CardView";
 import Filters from "../Components/Filters";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 interface Card {
   cardId: string;
@@ -11,6 +12,15 @@ interface Card {
   rarity: number;
   imgUrl: string;
   imgTrainedUrl?: string;
+}
+
+interface FiltersState {
+  selectedUnits: string[];
+  selectedRarities: string[];
+  selectedCharacters: string[];
+  selectedAvailability: string[];
+  selectedAttributes: string[];
+  searchTerm: string;
 }
 
 const PAGE_SIZE = 30;
@@ -27,34 +37,131 @@ function createCard(item: any): Card {
 }
 
 function CardList() {
+  const [searchParams] = useSearchParams();
+  const initialUnitFilter = searchParams.get("units");
+  const initialSearchFilter = searchParams.get("search");
+
+  const initialFiltersState: FiltersState = {
+    selectedUnits: initialUnitFilter ? [initialUnitFilter] : [],
+    selectedRarities: [],
+    selectedCharacters: [],
+    selectedAvailability: [],
+    selectedAttributes: [],
+    searchTerm: initialSearchFilter || "",
+  };
+
   const [cards, setCards] = useState<Card[]>([]);
   const [showFilters, setShowFilters] = useState(false);
   const [page, setPage] = useState(0);
   const [total, setTotal] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [filters, setFilters] = useState<FiltersState>(initialFiltersState);
   const mainWidth = showFilters ? "80vw" : "100vw";
   const marginLeft = showFilters ? "20vw" : "0vw";
 
   useEffect(() => {
-    fetch(
-      `http://localhost:3000/api/allCards?skip=${
-        page * PAGE_SIZE
-      }&take=${PAGE_SIZE}`
-    )
+    if (initialUnitFilter) {
+      setShowFilters(true);
+    }
+  }, []);
+
+  const fetchCards = (currentPage: number, currentFilters: FiltersState) => {
+    if (currentPage === 0 && cards.length === 0) {
+      setIsLoading(true);
+    }
+
+    if (currentPage === 0) {
+      setIsLoading(true);
+    }
+
+    const params = new URLSearchParams();
+    params.append("skip", (currentPage * PAGE_SIZE).toString());
+    params.append("take", PAGE_SIZE.toString());
+
+    if (currentFilters.selectedUnits.length > 0) {
+      params.append("units", currentFilters.selectedUnits.join(","));
+    }
+    if (currentFilters.selectedRarities.length > 0) {
+      params.append("rarities", currentFilters.selectedRarities.join(","));
+    }
+    if (currentFilters.selectedCharacters.length > 0) {
+      params.append("characters", currentFilters.selectedCharacters.join(","));
+    }
+    if (currentFilters.selectedAvailability.length > 0) {
+      params.append(
+        "availability",
+        currentFilters.selectedAvailability.join(",")
+      );
+    }
+    if (currentFilters.selectedAttributes.length > 0) {
+      params.append("attributes", currentFilters.selectedAttributes.join(","));
+    }
+    if (currentFilters.searchTerm) {
+      params.append("search", currentFilters.searchTerm.trim());
+    }
+
+    fetch(`http://localhost:3000/api/allCards?${params.toString()}`)
       .then((data) => data.json())
       .then((json) => {
         const { cards: rawCards, total } = json;
         const cardArr = rawCards.map(createCard);
         setTotal(total);
-        if (page === 0) {
-          setCards(cardArr); // replace on page 0
+        if (currentPage === 0) {
+          setCards(cardArr);
         } else {
-          setCards((prev) => [...prev, ...cardArr]); // append for subsequent pages
+          setCards((prev) => [...prev, ...cardArr]);
         }
-      });
-  }, [page]);
+      })
+      .catch((error) => console.error("Error fetching cards:", error))
+      .finally(() => setIsLoading(false));
+  };
+
+  const LoadingSpinner = () => (
+    <div
+      className="flex justify-center items-center h-full w-full absolute top-0 left-0 bg-[#162734] bg-opacity-90 z-50"
+      style={{ width: mainWidth, marginLeft: marginLeft }}
+    >
+      <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
+      <span className="ml-4 text-white text-xl">Loading cards...</span>
+    </div>
+  );
+
+  useEffect(() => {
+    fetchCards(page, filters);
+  }, [page, filters]);
+
+  const handleSearchSubmit = (newTerm: string) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      searchTerm: newTerm,
+    }));
+    setPage(0);
+  };
+
+  const handleApplyFilters = (newFilters: FiltersState) => {
+    setFilters(newFilters);
+    setPage(0);
+  };
+
   return (
     <div className="flex">
-      {showFilters && <Filters />}
+      {isLoading && <LoadingSpinner />}
+      {showFilters && (
+        <Filters
+          initialFilters={filters}
+          onApply={handleApplyFilters}
+          onReset={() => {
+            handleApplyFilters({
+              selectedUnits: [],
+              selectedRarities: [],
+              selectedCharacters: [],
+              selectedAvailability: [],
+              selectedAttributes: [],
+              searchTerm: "",
+            });
+          }}
+        />
+      )}
       <div
         className="min-h-[85vh] flex flex-col items-center gap-[5vh] px-[10vw] py-[2.5vh]"
         style={{ width: mainWidth, marginLeft: marginLeft }}
@@ -143,7 +250,10 @@ function CardList() {
             </svg>
             Filter
           </button>
-          <Search />
+          <Search
+            onSearchSubmit={handleSearchSubmit}
+            initialSearchTerm={filters.searchTerm}
+          />
         </div>
         <div className="flex flex-wrap gap-x-[1.25vw] gap-y-[1.25vw] w-[70vw]">
           {cards.map((card) => (

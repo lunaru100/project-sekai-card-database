@@ -1,15 +1,24 @@
 import Search from "../Components/Search";
 import UnitTile from "../Components/UnitTile";
+import { useNavigate } from "react-router-dom";
 
 function MainPage() {
   const units = [
     ["VIRTUAL SINGER", "/virtual_singers.png"],
-    ["LEO/NEED", "/leo_need.png"],
-    ["MORE MORE JUMP", "/more_more_jump.png"],
-    ["VIVID BAD SQUAD", "/vivid_bad_squad.png"],
-    ["WONDERLANDS x SHOWTIME", "/wonderlands.png"],
-    ["25_JI, NIGHTCORD DE.", "/nightcord.png"],
+    ["Leo/need", "/leo_need.png"],
+    ["MORE MORE JUMP!", "/more_more_jump.png"],
+    ["Vivid BAD SQUAD", "/vivid_bad_squad.png"],
+    ["Wonderlands X Showtime", "/wonderlands.png"],
+    ["Nightcord at 25", "/nightcord.png"],
   ];
+  const navigate = useNavigate();
+
+  const handleMainSearch = (searchTerm: string) => {
+    if (searchTerm) {
+      const encodedSearchTerm = encodeURIComponent(searchTerm);
+      navigate(`/cards?search=${encodedSearchTerm}`);
+    }
+  };
 
   return (
     <div>
@@ -18,7 +27,7 @@ function MainPage() {
           <span className="font-black text-6xl !mt-[20vh]">
             HAVE AN ACE UP YOUR SLEEVE
           </span>
-          <Search height="h-[50vh]" />
+          <Search height="h-[50vh]" onSearchSubmit={handleMainSearch} />
         </div>
 
         <div className="h-[90vh] flex flex-col items-center justify-center">

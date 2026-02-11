@@ -6,6 +6,7 @@ import MainPage from "./routes/MainPage";
 import Login from "./routes/Login";
 import Register from "./routes/Register";
 import CardList from "./routes/CardList";
+import News from "./routes/News";
 import "./index.css";
 
 const AppContainer: React.FC = () => {
@@ -29,6 +30,10 @@ const AppContainer: React.FC = () => {
         {
           path: "/cards",
           element: <CardList />,
+        },
+        {
+          path: "/news",
+          element: <News />,
         },
       ],
     },
